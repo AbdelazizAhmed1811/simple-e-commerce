@@ -39,10 +39,17 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        // 'public_products_images' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/products_images'),
+        //     'url' => env('APP_URL') . '/storage/products_images',
+        //     'visibility' => 'public',
+        // ],
 
         's3' => [
             'driver' => 's3',

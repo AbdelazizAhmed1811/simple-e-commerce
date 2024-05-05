@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id'); // Auto-incrementing primary key
             $table->string('name'); // Name column
-            $table->string('description')->nullable(); // Description column (nullable)
-            // $table->binary('img'); // Image column (binary data)
+            $table->string('description')->nullable(); // Description column 
+            $table->string('img'); // File path for the image
             $table->string('product_type'); // Product type column
-            $table->integer('price'); // Price column
-            $table->tinyInteger('in_stock')->nullable(); // IN_Stock column (nullable)
-            $table->string('categories'); // Categories column
+            $table->decimal('price', 8, 2); // Price column
+            $table->integer('in_stock'); // IN_Stock column
+            $table->string('category'); // Category column
             $table->timestamps(); // Created_at and updated_at columns
         });
     }

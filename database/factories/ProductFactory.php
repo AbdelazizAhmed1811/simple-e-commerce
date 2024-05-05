@@ -32,8 +32,8 @@ class ProductFactory extends Factory
             'description' => fake()->sentence(),
             'product_type' => fake()->name(),
             'price' => fake()->numberBetween(0, 5000),
-            'in_stock' => fake()->boolean(),
-            'categories' => fake()->name(),
+            'in_stock' => fake()->numberBetween(0, 100),
+            'category' => fake()->name(),
         ];
     }
 

@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users,email',
             # at least one uppercase, one lowercase, one number, one special character and at least 8 characters
             'password' => 'required|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
-            'phone_number' => ['required', 'string', 'regex:/^[0-9]{10,15}$/'], // Adjust the regex pattern as needed
+            'phone_number' => ['required', 'string', 'regex:/^(010|012|011|015)\d{8}$/', 'unique:users,phone_number'], // Adjust the regex pattern as needed
         ];
     }
 }

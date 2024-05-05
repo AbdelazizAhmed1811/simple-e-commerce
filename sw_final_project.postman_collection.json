@@ -1,0 +1,777 @@
+{
+	"info": {
+		"_postman_id": "99f2fafa-b5c7-4b5d-9865-9a38e3072e7a",
+		"name": "sw_final_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33124357"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"jj\",\n  \"email\": \"abdoronaldo515@gmail.com\",\n  \"password\": \"Pa11111@\",\n  \"password_confirmation\": \"Pa11111@\",\n  \"phone_number\":\"01011309351\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/register",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"zizo@gmail.com\",\n  \"password\": \"Pa11111@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/login",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer 6|EGWO7EnAJrT7FJ7hlvIvmgZagss4easYRj9TUGKvb9abea3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":\"abdelazizahmed1811@gmail.com\",\n  \"password\":\"11As@@@@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}logout",
+							"host": [
+								"{{DOMAIN}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer 5|yLAIVeT9b2jBnA06BkHDoVp9rxUHNBEuX6D8dWOd3c7e20f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":\"jdaflkadk@gmail.com\",\n  \"password\":\"pP@2223222\",\n  \"password_confirmation\":\"pP@2223222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/reset-password",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://smart-electronics.000webhostapp.com/api/email/verify/4/532410b99cec9b0c5062d374f3f73047ccbd44a2?expires=1714512705&signature=8db7d2a44bb578689fd12da24fa0788ad493012941e0f290f565143c002582ef",
+							"protocol": "https",
+							"host": [
+								"smart-electronics",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"email",
+								"verify",
+								"4",
+								"532410b99cec9b0c5062d374f3f73047ccbd44a2"
+							],
+							"query": [
+								{
+									"key": "expires",
+									"value": "1714512705"
+								},
+								{
+									"key": "signature",
+									"value": "8db7d2a44bb578689fd12da24fa0788ad493012941e0f290f565143c002582ef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/users",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "all products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/products",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "filter[name]",
+									"value": "Johns, ",
+									"disabled": true
+								},
+								{
+									"key": "filter[category]",
+									"value": "Percival",
+									"disabled": true
+								},
+								{
+									"key": "filter[description]",
+									"value": "repellat",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer 1|xDg3Wr00zwQzg30wJe5KPyTIDt4YzLEXL5sX9HmM56edade1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/products/2",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store product ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Field</th>\r",
+									"        <th>Error Message</th>\r",
+									"    </tr>\r",
+									"    {{#each response.errors}}\r",
+									"        <tr>\r",
+									"            <td>{{@key}}</td>\r",
+									"            <td>{{this}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "zzz",
+									"type": "default"
+								},
+								{
+									"key": "product_type",
+									"value": "zzz",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "155",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "zzz",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "fjdlkakljdflka",
+									"type": "default"
+								},
+								{
+									"key": "in_stock",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "/F:/wallpapers/logo-search-grid-1x.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/products",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/products/1/delete",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "price",
+									"value": "777",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "mmm",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "mmm",
+									"type": "default"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "/F:/wallpapers/423148.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/products/2/update",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "store comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"user 1 comment 2 \"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/products/2/comments",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"products",
+								"2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/comments/like/3",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"comments",
+								"like",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dislike",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/comments/dislike/3",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"comments",
+								"dislike",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"user updated this comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/comments/update/4",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"comments",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/comments/delete/4",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"comments",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "adminToken",
+			"value": "1|YHvA710hmHi7D0S5n8klvdhNIwyeDiANAjVwur9Ja00c7795"
+		},
+		{
+			"key": "userToken",
+			"value": "2|G3I4CwH2lUmfwMDL4yDaXQz9M2sUcrqtTwizs1oN6a93294e"
+		}
+	]
+}

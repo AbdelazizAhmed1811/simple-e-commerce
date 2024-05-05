@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Dislikes;
 use App\Models\Likes;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,11 @@ class CommentController extends Controller
             DB::commit();
 
             return response()->json(['message' => 'Comment added successfully', 'comment' => $comment], 201);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            return response()->json([
+                'errors' => $e->getMessage()
+            ], 422);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -100,6 +106,10 @@ class CommentController extends Controller
             DB::commit();
 
             return response()->json(['message' => 'Comment updated successfully', 'comment' => $comment]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'errors' => $e->getMessage()
+            ], 422);
         } catch (Exception $e) {
             // Rollback transaction on error
             DB::rollBack();
@@ -209,7 +219,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         // Ensure that the authenticated user is authorized to delete the comment
-        if ($comment->creator_id !== auth()->id()) {
+        if ($comment->creator_id != auth()->id() && auth()->user()->role == 'user') {
             return response()->json(['error' => 'You are not authorized to delete this comment.'], 403);
         }
 

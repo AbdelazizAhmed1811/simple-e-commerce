@@ -19,8 +19,11 @@ class Product extends Model
     protected $fillable = [
         'name',
         'img',
-        'categories',
-        'price'
+        'description',
+        'product_type',
+        'category',
+        'price',
+        'in_stock'
     ];
 
     /**
@@ -46,14 +49,4 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class, 'product_id');
     }
-
-    // public function memberShip(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Project::class, Member::class);
-    // }
-
-    // public function projects(): HasMany
-    // {
-    //     return $this->hasMany(Project::class, 'creator_id');
-    // }
 }

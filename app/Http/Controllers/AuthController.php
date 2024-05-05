@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Customs\Services\EmailVerificationService;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use App\Notifications\EmailVerificationNotification;
+use App\Http\Resources\UserCollection;
+use Mail;
 use Illuminate\Auth\Notifications\VerifyEmail;
-
 
 class AuthController extends Controller
 {
 
-    public function __construct(private EmailVerificationService $service)
-    {
-    }
     public function register(RegisterRequest $request)
     {
         try {
@@ -33,11 +30,11 @@ class AuthController extends Controller
                 'phone_number' => $validated['phone_number'],
                 'password' => Hash::make($validated['password']),
             ]);
+            // Mail::raw('Text to e-mail', function ($message) {
+            //     //
+            // });
 
-
-            // $this->service->sendVerificationLink($user);
-            $user->notify(new VerifyEmail);
-            // $user->notify(new EmailVerificationNotification('/'));
+            // $user->notify(new VerifyEmail);
 
             DB::commit();
 
@@ -94,7 +91,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-
             Auth::user()->tokens()->delete();
 
             return response()->json([
@@ -118,7 +114,6 @@ class AuthController extends Controller
             ]);
 
             $user = Auth::user();
-            // dd($user);
             $user->password = Hash::make($validated['password']);
             $user->save();
 
@@ -131,6 +126,25 @@ class AuthController extends Controller
             return response()->json([
                 "message" => $th->getMessage()
             ], 500);
+        }
+    }
+
+
+
+    public function index()
+    {
+        try {
+            if (Auth::user()->role !== 'admin') {
+                return response()->json(['message' => 'You are not authorized to perform this action'], 403);
+            }
+
+            $users = User::where('role', '!=', 'admin')->get();
+            return new UserCollection($users);
+
+
+        } catch (\Throwable $th) {
+
+            return response()->json(["message" => $th->getMessage()], 500);
         }
     }
 }
